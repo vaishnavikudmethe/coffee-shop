@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="Coffee shop.css">
+    <title>Best Coffee store in India</title>
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="div3">
+            <img src="Coffee-logo.webp" alt="Coffee logo">
+            <span class="logo-text">Coffee Shop</span>
+        </div>
+        <div>
+            <nav class="coffee-nav">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="contacts.html">Contacts</a>
+            </nav>
+        </div>
+        </header>
+    </div>
+    <div class="site-content">
+        <div class="img-content">
+            <h1 class="quote">
+                Coffee is the best thing to douse the sunrise with
+            </h1>
+        </div>
+        <div class="card-list">
+            <h1 id="product-h1">Product</h1>
+            <div class="card">
+                <img src="americano-image.png" alt="">
+                <div>Americano</div> 
+            </div>
+
+            <div class="card">
+                <img src="cappuccino-image.png" alt="">
+                <div>Cappuccino</div> 
+            </div>
+
+            <div class="card">
+                <img src="latte-image.png" alt="">
+                <div>Latte</div> 
+            </div>
+
+            <div class="card">
+                <img src="mocha-image.png" alt="">
+                <div>Mocha</div> 
+            </div>
+        </div>
+
+        <table class="mytable"></table>
+            <table border="1">
+                <caption><h3>Coffee Menu</h3></caption>
+                 <tr>
+                     <th>Coffee</th>
+                     <th>Price &#8377</th>
+                     <th>Avaibility</th>
+                 </tr>       
+                 <tr class="in-stock">
+                     <td>Mocha</td>
+                     <td>250</td>
+                     <td>in stock</td>
+                 </tr>
+                 <tr class="in-stock">
+                     <td>cappuccino</td>
+                     <td>250</td>
+                     <td>in stock</td>
+                 </tr>
+                 <tr class="out-of-stock">
+                     <td>Latte</td>
+                     <td>250</td>
+                     <td>out of stock</td>
+                 </tr>
+                 <tr class="in-stock">
+                     <td>Americano</td>
+                     <td>250</td>
+                     <td>in stock</td>
+                 </tr>
+                </table>
+
+      
+            <h1 id="order">Order</h1>
+            
+                <form id="orderForm">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                
+                    <label for="coffee">Select Coffee:</label>
+                    <select id="coffee" name="coffee">
+                        <option value="Americano">Americano</option>
+                        <option value="Cappuccino">Cappuccino</option>
+                        <option value="Latte">Latte</option>
+                        <option value="Mocha">Mocha</option>
+                    </select>
+                
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                
+                    <button type="submit">Place Order</button>
+                </form>
+                <p id="orderMessage"></p>
+            
+       
+    </div>
+
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent page reload
+    
+            // Get form data
+            const name = document.getElementById("name").value;
+            const coffee = document.getElementById("coffee").value;
+            const quantity = document.getElementById("quantity").value;
+    
+            // Send data to backend
+            const response = await fetch("http://localhost:5000/order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, coffee, quantity }),
+            });
+    
+            const result = await response.json();
+            document.getElementById("orderMessage").innerText = result.message;
+        });
+
+
+        // Function to toggle stock status
+function toggleStock(coffeeName) {
+    
+    let stockCell = document.querySelector(`.stock-status[data-coffee='${coffeeName}']`);
+    
+    if (stockCell.innerText === "In Stock") {
+        stockCell.innerText = "Out of Stock";
+        stockCell.style.color = "red";
+    } else {
+        stockCell.innerText = "In Stock";
+        stockCell.style.color = "green";
+    }
+}
+
+
+// Fetch and display coffee menu from MongoDB
+function fetchCoffeeMenu() {
+    fetch("http://localhost:5000/get-coffees")
+        .then(response => response.json())
+        .then(coffees => {
+            const menuTable = document.getElementById("coffee-menu");
+            menuTable.innerHTML = ""; // Clear old data
+
+            coffees.forEach(coffee => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${coffee.name}</td>
+                    <td>$${coffee.price}</td>
+                    <td class="stock-status" data-coffee="${coffee.name}">${coffee.status}</td>
+                    <td><button onclick="toggleStock('${coffee.name}')">Toggle Stock</button></td>
+                `;
+                menuTable.appendChild(row);
+            });
+        })
+        .catch(error => console.error("Error fetching coffee menu:", error));
+}
+
+
+    </script>
+
+  
+</body>
+</html>

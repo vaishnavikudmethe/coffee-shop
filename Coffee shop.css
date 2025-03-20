@@ -1,0 +1,470 @@
+/* .mydiv{
+    height: 200px;
+    width: 200px;
+    border: 3px dotted red;
+    font-size: 20px; 
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    
+} */
+
+
+html, body {
+    height: 100%; /* Makes sure the page takes full height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+caption{
+    color:rgb(32, 32, 64);
+    font-size: large;
+    
+}
+th{
+    background-color: green;
+    color: white;
+    height: 50px;
+}
+td{
+    color: brown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+tr{
+    height: 1cm;
+}
+.out-of-stock:hover{
+    background-color: pink;
+}
+.in-stock:hover{
+    background-color: aqua;
+}
+/* .navig{
+    background-color: rgb(198, 224, 232);
+    padding-top: 6px;
+    height: 30px;
+    width: 100%;
+} */
+.footer{
+    height: 70px;width: 100%;
+    background-color:  rgb(8, 8, 20);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    position:fixed;
+    bottom: 0px;
+} 
+
+.wrapper {
+    flex: 1;  /* Pushes the footer down */
+    padding-bottom: 10%;  /* Adds space so content is not hidden */
+}
+
+
+
+span{
+    color:green;
+}
+
+[href]{
+    color: green;
+}
+[href="index.html"]{
+    color: red;
+}
+.div1{
+    height: 20%;
+    width: 14%;
+    background-color: lightgreen;
+    margin: 4px;
+    display: inline-block;
+}
+.div2{
+    border: 3px solid red; 
+    width: 100%; height: 500px;
+    padding: 2px;
+}
+
+@media (min-width: 300px) and (max-width:400px){
+   .card{
+    font-size: 10px;
+    color: red;
+   }
+}
+
+
+
+.nav-bar {
+    height: 90px; 
+    width: 100%;
+    background-color: rgb(14, 14, 35);
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    display: flex;
+    align-items: center; 
+    padding: 0 20px;
+}
+
+
+.div3{
+    margin: 10px;
+    float: left;
+    text-align: center;
+    height: 100%;
+
+}
+.logo-text{
+    display: block;
+    color: white;
+    font-size: 14px;
+    font-family: Helvetica, sans-serif;
+}
+
+
+.coffee-nav {
+    margin-left: auto; /* Pushes links to the right */
+}
+
+.coffee-nav a {
+    color: white;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+}
+
+.coffee-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+    border-radius: 5px;
+}
+
+
+.site-content{
+    position: absolute;
+    top: 78px;
+    width: 100%;
+}
+.img-content{
+    background-image: url("background-image.jpg");
+    height: 850px;
+    width: 100%;
+    text-align: center;
+}
+.quote{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    top: 10%;
+}
+#product-h1{
+    text-align: center;
+}
+.card{
+    width: 22%;
+    height: 200px;
+    padding: 1.5%;
+    float: left;
+    text-align: center;
+    font-size: x-large ;
+    color: black;
+}
+.card img{
+   width: 100%;
+}
+
+.card-list{
+    height: 300px;
+    width: 100%;
+    margin-bottom: 100px;
+}
+.contact-div{
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    bottom: 100px;
+    text-align: center;
+}
+
+.order-section{
+    width: 100%;
+}
+
+/* Prevent table overlap */
+.orders-section {
+    margin-top: 80px; /* Adds space between the menu and order tables */
+    padding: 20px;
+}
+
+.orders-section::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.orderForm{
+    padding: 80;
+}
+#order{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form{
+  margin:0 auto;
+  width: 100px;
+    
+}
+
+/* General Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 40px; /* Adds space below each table */
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #6b4f4f;
+    color: white;
+}
+
+/* Pending Orders - Yellow */
+#pending-orders tr {
+    background-color: #fff3cd; /* Light yellow */
+}
+
+/* Completed Orders - Light Green */
+#completed-orders tr {
+    background-color: #d4edda; /* Light green */
+}
+
+/* Button Styling */
+button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+/* Complete Button - Blue */
+button[onclick^="completeOrder"] {
+    background-color: #007bff;
+    color: white;
+}
+
+button[onclick^="completeOrder"]:hover {
+    background-color: #0056b3;
+}
+
+/* Delete Button - Red */
+button[onclick^="deleteOrder"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+button[onclick^="deleteOrder"]:hover {
+    background-color: #a71d2a;
+}
+
+Add spacing between sections
+h2 {
+    margin-top: 100px;
+}
+
+
+.orders-container {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+}
+
+
+.orders-container::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* Order Section Styling */
+.order-section {
+    width: 50%;
+    margin: 50px auto; /* Centers the section */
+    padding: 20px;
+    background: #f8f9fa;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Form Elements */
+.order-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.order-section label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+.order-section input, .order-section select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Order Button */
+.order-section button {
+    width: 100%;
+    padding: 10px;
+    background: #6b4f4f;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.order-section button:hover {
+    background: #4e3838;
+}
+
+/* Order Message */
+#orderMessage {
+    font-size: 16px;
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+}
+
+
+.stock-status {
+    font-weight: bold;
+    color: green; /* Default color for In Stock */
+}
+
+.stock-status[data-coffee][innerText="Out of Stock"] {
+    color: red;
+}
+
+
+/* Style for In Stock / Out of Stock */
+/* .stock-status {
+    font-weight: bold;
+}
+
+.stock-status:contains("In Stock") {
+    color: green;
+}
+
+.stock-status:contains("Out of Stock") {
+    color: red;
+} */
+
+
+/* General Button Styling */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Primary Button (For order submission) */
+button[type="submit"] {
+    background-color: #6b4f4f;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #4e3838;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Secondary Buttons (e.g., toggle stock, delete, etc.) */
+button.secondary {
+    background-color: #007bff;
+    color: white;
+}
+
+button.secondary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Delete Button (For order deletion) */
+button.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.delete:hover {
+    background-color: #a71d2a;
+    transform: scale(1.05);
+}
+
+
+/* Form Container */
+form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Focus Effect */
+input:focus, select:focus {
+    border-color: #6b4f4f;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(107, 79, 79, 0.5);
+}
